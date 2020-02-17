@@ -1,0 +1,28 @@
+Opttek 
+
+Know optimization stuff
+
+"I know for OptTek , definitely be familiar with depth first vs breadth first searches."
+Erty also mentioned breadh and depth search. We should learn this soon. 
+
+"I’d look up and understand at least one mode of optimization for OptTek, or at least something related. For example, you could look into gradient descent, or tabu search, or even genetic algorithms."
+
+"You don’t necessarily have to be able to implement any of that so much as talk intelligently about it."
+
+Knapsack problem.
+
+"Tabu search is actually a cool way to solve the knapsack problem.
+You don’t get “the” answer, but you can usually get a good one.
+Which is typically what you settle for once the problem size becomes large enough."
+
+"Right, so another good thing to know about is global vs local maxima/minima.
+Which is a little easier to understand from the gradient descent/calc perspective, but still applies to virtually all optimization.
+But besides all that, of course know fundamentals like arrays/hashmaps/trees is always useful.
+I know OptTek specifically looks for knowledge of Java, and it’s collections.
+Heaps are goofy, but can be useful."
+
+For certain things, like hashmaps, most places don't care if you understand how they work under the hood, they care if you know when/how to use them. Google/Amazon might be different. 
+
+Max said look up the book Cracking The Coding Interview.  
+"It has a really nice run down of how to approach interview problems and questions, gives a ton of examples, and does a nice job of refreshing how various data structures work."
+
