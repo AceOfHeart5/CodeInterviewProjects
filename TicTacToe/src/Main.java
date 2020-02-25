@@ -3,46 +3,59 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
-        boolean player1 = true; // boolean for player 1 vs 2.
-        boolean playing = true;
-        while (playing) {
-            while (!game.boardFull()) {
-                game.takeTurn(player1);
+        boolean running = true;
+        System.out.println("Welcome to Tic Tac Toe!");
+        while (running) {
+            boolean player1 = false; // boolean for player 1 vs 2.
+            boolean playing = true;
+            while (playing) {
                 player1 = !player1;
+                game.takeTurn(player1);
+                if (game.checkVictory(true)) {
+                    victoryMsg("Player 1");
+                    playing = false;
+                }
+                if (game.checkVictory(false)) {
+                    victoryMsg("Player 2");
+                    playing = false;
+                }
+                if (playing && game.boardFull()) {
+                    System.out.println("The game was a draw");
+                    playing = false;
+                }
             }
-            boolean winner = false;
-            if (game.checkVictory(true)) {
-                victoryMsg("Player 1");
-                winner = true;
-            }
-            if (game.checkVictory(true)) {
-                victoryMsg("Player 2");
-                winner = true;
-            }
-            if (!winner) System.out.println("The game was a draw");
             game.printBoard();
             System.out.println("Play again? Y / N");
-
+            if (getYorN()) game.reset();
+            else running = false;
         }
+        System.out.println("Thanks for playing!");
     }
 
     private static void victoryMsg(String name) {
         System.out.println(name + " is the winner!");
     }
 
+    // returns true if user enters y, false if user enters n
     private static boolean getYorN() {
         Scanner keyboard = new Scanner(System.in);
         boolean result = false;
-        String answer = "";
         boolean valid = false;
         while (!valid) {
-            valid = true;
-            answer = keyboard.nextLine();
+            String answer = keyboard.nextLine();
             if (answer.length() != 1) {
                 System.out.println("Please enter only Y or N");
-                valid = false;
+            } else {
+                if (answer.equalsIgnoreCase("y")) {
+                    valid = true;
+                    result = true;
+                }
+                if (answer.equalsIgnoreCase("n")) {
+                    valid = true;
+                    result = false;
+                }
+                if (!valid) System.out.println("Please enter only Y or N");
             }
-            
         }
         return result;
     }

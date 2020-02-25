@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TicTacToe {
     private final static int BOARD_SIZE = 3;
     private final static String LINE = "-------";
-    private final static char DIV = '|';
+    private final static String DIV = "|";
     private final static char FREE_SPACE = ' ';
     private final static char MARKER_P1 = 'X';
     private final static char MARKER_P2 = 'O';
@@ -21,11 +21,7 @@ public class TicTacToe {
     private char[][] board = new char[BOARD_SIZE][BOARD_SIZE]; // [row][col]
 
     public TicTacToe() {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int k = 0; k < BOARD_SIZE; k++) {
-                board[i][k] = FREE_SPACE;
-            }
-        }
+        reset();
     }
 
     // playerOne param true if for player 1 turn, 2 for player 2
@@ -168,6 +164,7 @@ public class TicTacToe {
     }
 
     private void printGuide() {
+        System.out.println("Position guide:");
         System.out.println(LINE);
         System.out.println(DIV + 1 + DIV + 2 + DIV + 3 + DIV);
         System.out.println(LINE);
@@ -209,5 +206,13 @@ public class TicTacToe {
             }
         }
         return result;
+    }
+
+    public void reset() {
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int k = 0; k < BOARD_SIZE; k++) {
+                board[i][k] = FREE_SPACE;
+            }
+        }
     }
 }
