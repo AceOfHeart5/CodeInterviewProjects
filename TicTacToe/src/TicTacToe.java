@@ -19,7 +19,6 @@ public class TicTacToe {
         -------
     */
     private char[][] board = new char[BOARD_SIZE][BOARD_SIZE]; // [row][col]
-    private boolean player1Turn = true; // keep track of player 1 vs 2 turn
 
     public TicTacToe() {
         for (int i = 0; i < BOARD_SIZE; i++) {
@@ -30,7 +29,12 @@ public class TicTacToe {
     }
 
     // playerOne param true if for player 1 turn, 2 for player 2
-    private void takeTurn(boolean playerOne) {
+    public void takeTurn(boolean playerOne) {
+        if (boardFull()) {
+            System.out.println("Board full. Turn cannot be taken.");
+            return;
+        }
+
         printBoard();
         String name = (playerOne) ? "Player 1" : "Player 2";
         System.out.println(name + ", enter a board position. Enter help or h for guide.");
@@ -153,7 +157,7 @@ public class TicTacToe {
         return keyboard.nextLine();
     }
 
-    private void printBoard() {
+    public void printBoard() {
         System.out.println(LINE);
         System.out.println(DIV + board[0][0] + DIV + board[0][1] + DIV + board[0][2] + DIV);
         System.out.println(LINE);
@@ -171,5 +175,39 @@ public class TicTacToe {
         System.out.println(LINE);
         System.out.println(DIV + 7 + DIV + 8 + DIV + 9 + DIV);
         System.out.println(LINE + "\n");
+    }
+
+    public boolean checkVictory(boolean player1) {
+        boolean win = false;
+        char marker = (player1) ? MARKER_P1 : MARKER_P2;
+
+        // checks are hard coded for simplicity/speed of development
+        // rows
+        if (board[0][0] == marker && board[0][1] == marker && board[0][1] == marker) win = true;
+        if (board[1][0] == marker && board[1][1] == marker && board[1][1] == marker) win = true;
+        if (board[2][0] == marker && board[2][1] == marker && board[2][1] == marker) win = true;
+        // columns
+        if (board[0][0] == marker && board[1][0] == marker && board[2][0] == marker) win = true;
+        if (board[0][1] == marker && board[1][1] == marker && board[2][1] == marker) win = true;
+        if (board[0][2] == marker && board[1][2] == marker && board[2][2] == marker) win = true;
+        // diagonals
+        if (board[0][0] == marker && board[1][1] == marker && board[2][2] == marker) win = true;
+        if (board[2][0] == marker && board[1][1] == marker && board[0][2] == marker) win = true;
+
+        return win;
+    }
+
+    public boolean boardFull() {
+        boolean result = true;
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            for (int k = 0; k < BOARD_SIZE; k++) {
+                if (board[i][k] == FREE_SPACE) {
+                    result = false;
+                    i = BOARD_SIZE;
+                    k = BOARD_SIZE;
+                }
+            }
+        }
+        return result;
     }
 }
