@@ -6,7 +6,7 @@ public class Main {
         boolean running = true;
         System.out.println("Welcome to Tic Tac Toe!");
         while (running) {
-            boolean player1 = false; // boolean for player 1 vs 2.
+            boolean player1 = false; // boolean for player 1 vs 2. True for player 1, false for player 2.
             boolean playing = true;
             while (playing) {
                 player1 = !player1;
@@ -20,7 +20,7 @@ public class Main {
                     playing = false;
                 }
                 if (playing && game.boardFull()) {
-                    System.out.println("The game was a draw");
+                    System.out.println("The game is a draw.");
                     playing = false;
                 }
             }

@@ -18,7 +18,7 @@ public class TicTacToe {
         |7|8|9|
         -------
     */
-    private char[][] board = new char[BOARD_SIZE][BOARD_SIZE]; // [row][col]
+    private char[][] board = new char[BOARD_SIZE][BOARD_SIZE]; // [row][col], from top left to bottom right
 
     public TicTacToe() {
         reset();
@@ -180,9 +180,9 @@ public class TicTacToe {
 
         // checks are hard coded for simplicity/speed of development
         // rows
-        if (board[0][0] == marker && board[0][1] == marker && board[0][1] == marker) win = true;
-        if (board[1][0] == marker && board[1][1] == marker && board[1][1] == marker) win = true;
-        if (board[2][0] == marker && board[2][1] == marker && board[2][1] == marker) win = true;
+        if (board[0][0] == marker && board[0][1] == marker && board[0][2] == marker) win = true;
+        if (board[1][0] == marker && board[1][1] == marker && board[1][2] == marker) win = true;
+        if (board[2][0] == marker && board[2][1] == marker && board[2][2] == marker) win = true;
         // columns
         if (board[0][0] == marker && board[1][0] == marker && board[2][0] == marker) win = true;
         if (board[0][1] == marker && board[1][1] == marker && board[2][1] == marker) win = true;
